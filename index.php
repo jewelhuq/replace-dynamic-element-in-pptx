@@ -12,13 +12,17 @@ $TBS->Plugin(TBS_INSTALL, OPENTBS_PLUGIN);
 $template = 'template.pptx'; // Path to your PPTX file
 $TBS->LoadTemplate($template);
 
-// Replace the placeholder {name} with the text "maza"
+// Path to the new image you want to insert
+$new_image = 'qrcode.png'; // Path to your image (ensure it exists)
 
+// Replace the placeholder shape with the Alt Text "qrcode" with the new image
+$TBS->PlugIn(OPENTBS_CHANGE_PICTURE, 'qrcode', $new_image);
 $TBS->Source = str_replace('{name}', 'John Doe', $TBS->Source);
+
 // Save the updated PPTX file
 $outputFile = 'presentation_updated.pptx';
 $TBS->Show(OPENTBS_FILE, $outputFile);
 
-echo "The placeholder {name} has been replaced with 'maza' successfully!";
+echo "The placeholder image has been replaced with the new image successfully!";
 
 ?>
